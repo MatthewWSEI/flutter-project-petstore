@@ -16,17 +16,21 @@ class FirebaseDatabase {
   // }
 
   Stream<QuerySnapshot> getCategoriesStream() {
-    final categoryStream = FirebaseFirestore.instance
-        .collection('categories')
-        // .orderBy("TimeStamp", descending: true)
-        .snapshots();
+    final categoryStream =
+        FirebaseFirestore.instance.collection('categories').snapshots();
     return categoryStream;
   }
 
   Stream<QuerySnapshot> getProductsStream() {
+    final productStream =
+        FirebaseFirestore.instance.collection('products').snapshots();
+    return productStream;
+  }
+
+  Stream<QuerySnapshot> getProductStream(String categoryId) {
     final productStream = FirebaseFirestore.instance
         .collection('products')
-        // .orderBy("TimeStamp", descending: true)
+        .where('categoryId', isEqualTo: categoryId)
         .snapshots();
     return productStream;
   }

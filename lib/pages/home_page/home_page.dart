@@ -3,14 +3,11 @@ import 'package:flutter_img/flutter_img.dart';
 import 'package:flutter_project_store/components/button.dart';
 import 'package:flutter_project_store/components/mydrawer.dart';
 import 'package:flutter_project_store/components/mytextfield.dart';
-import 'package:flutter_project_store/database/firebase.dart';
 import 'package:flutter_project_store/pages/home_page/categories.dart';
 import 'package:flutter_project_store/pages/home_page/recoemmendSection.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-
-  final FirebaseDatabase database = FirebaseDatabase();
 
   TextEditingController searchController = TextEditingController();
 

@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_img/flutter_img.dart';
+import 'package:flutter_project_store/components/category_tile.dart';
 import 'package:flutter_project_store/database/firebase.dart';
+import 'package:flutter_project_store/helper/helper_function.dart';
+import 'package:flutter_project_store/pages/categories_page/categories_page.dart';
 
-class Categories extends StatelessWidget {
+class Categories extends StatefulWidget {
   Categories({super.key});
 
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
   final FirebaseDatabase database = FirebaseDatabase();
 
-  // List<CategoryModel> categories = [];
-
-  // void _getInitialInfo() {
-  //   categories = CategoryModel.getCategories();
-  // }
+  void navigateToCategories(String index) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: ((context) =>
+                CategoriesPage(categoryId: index.toString()))));
+  }
 
   @override
   Widget build(BuildContext context) {
-    // _getInitialInfo();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,7 +41,7 @@ class Categories extends StatelessWidget {
             stream: database.getCategoriesStream(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                // dispalyMessageToUser("Something went wrong", context);
+                dispalyMessageToUser("Something went wrong", context);
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
@@ -46,7 +54,7 @@ class Categories extends StatelessWidget {
 
               final categories = snapshot.data!.docs;
               return SizedBox(
-                height: 140,
+                height: 200,
                 child: ListView.separated(
                   itemCount: categories.length,
                   scrollDirection: Axis.horizontal,
@@ -58,43 +66,13 @@ class Categories extends StatelessWidget {
                     final category = categories[index];
                     String name = category["name"];
                     String iconName = category["iconName"];
-                    return Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 20),
-                      width: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          gradient: LinearGradient(colors: [
-                            const Color(0xff9DCEFF).withOpacity(0.7),
-                            const Color(0xff92A3FD).withOpacity(0.7)
-                          ])),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: const BoxDecoration(
-                                color: Colors.white, shape: BoxShape.circle),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Img(
-                                "assets/images/$iconName.png",
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            name,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 14),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                    return CategoryTile(
+                      name: name,
+                      iconName: iconName,
+                      onTap: () {
+                        navigateToCategories(index.toString());
+                        // print(index);
+                      },
                     );
                   },
                 ),

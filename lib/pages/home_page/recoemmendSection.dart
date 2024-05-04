@@ -27,7 +27,7 @@ class RecommendSection extends StatelessWidget {
             stream: database.getProductsStream(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
-                // dispalyMessageToUser("Something went wrong", context);
+                dispalyMessageToUser("Something went wrong", context);
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(

@@ -73,9 +73,10 @@ class MyDrawer extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.logout),
               title: const Text("L O G O U T"),
-              onTap: () {
+              onTap: () async {
                 logout();
                 Navigator.pop(context);
+                // Navigator.pushNamed(context, "/login_register_page");
               },
             ),
           ),
