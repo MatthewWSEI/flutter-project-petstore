@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         "/home_page": (context) => HomePage(),
         "/profile_page": (context) => ProfilePage(),
       },
-      home: const AuthPage(),
+      home: AuthPage(),
     );
   }
 }

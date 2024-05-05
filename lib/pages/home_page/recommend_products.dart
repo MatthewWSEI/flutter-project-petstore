@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_store/components/category_tile.dart';
+import 'package:flutter_project_store/components/product_tile.dart';
 import 'package:flutter_project_store/database/firebase.dart';
 import 'package:flutter_project_store/helper/helper_function.dart';
-import 'package:flutter_project_store/pages/categories_page/categories_page.dart';
+import 'package:flutter_project_store/pages/product_page/product_page.dart';
 
-class Categories extends StatefulWidget {
-  Categories({super.key});
+class RecommendProducts extends StatelessWidget {
+  RecommendProducts({super.key});
 
-  @override
-  State<Categories> createState() => _CategoriesState();
-}
-
-class _CategoriesState extends State<Categories> {
   final FirebaseDatabase database = FirebaseDatabase();
-
-  void navigateToCategories(String index) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: ((context) =>
-                CategoriesPage(categoryId: index.toString()))));
-  }
 
   @override
   Widget build(BuildContext context) {
+    void navigateToCategories(String index) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: ((context) =>
+                  ProductPage(productId: index.toString()))));
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
           padding: EdgeInsets.only(left: 20),
           child: Text(
-            'Category',
+            'Recommendation\nfor You',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
@@ -38,7 +33,7 @@ class _CategoriesState extends State<Categories> {
           height: 15,
         ),
         StreamBuilder(
-            stream: database.getCategoriesStream(),
+            stream: database.getProductsStream(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 dispalyMessageToUser("Something went wrong", context);
@@ -52,26 +47,26 @@ class _CategoriesState extends State<Categories> {
                 return const Text("No data");
               }
 
-              final categories = snapshot.data!.docs;
+              final products = snapshot.data!.docs;
               return SizedBox(
-                height: 200,
+                height: 270,
                 child: ListView.separated(
-                  itemCount: categories.length,
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 25,
+                  ),
+                  itemCount: 3,
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  separatorBuilder: (context, index) => const SizedBox(
-                    width: 20,
-                  ),
                   itemBuilder: (context, index) {
-                    final category = categories[index];
-                    String name = category["name"];
-                    String iconName = category["iconName"];
-                    int newIndex = index + 1;
-                    return CategoryTile(
+                    final product = products[index];
+                    String name = product['name'];
+                    int price = product['price'];
+                    return ProductTile(
                       name: name,
-                      iconName: iconName,
+                      price: price,
                       onTap: () {
-                        navigateToCategories(newIndex.toString());
+                        navigateToCategories(product.id.toString());
+                        // print(index);
                       },
                     );
                   },

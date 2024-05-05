@@ -7,14 +7,6 @@ class FirebaseDatabase {
   final CollectionReference posts =
       FirebaseFirestore.instance.collection('Posts');
 
-  // Future<void> addPost(String messsage) {
-  //   return posts.add({
-  //     'UserEmail': user!.email,
-  //     "PostMessage": messsage,
-  //     'TimeStamp': Timestamp.now(),
-  //   });
-  // }
-
   Stream<QuerySnapshot> getCategoriesStream() {
     final categoryStream =
         FirebaseFirestore.instance.collection('categories').snapshots();
@@ -27,10 +19,18 @@ class FirebaseDatabase {
     return productStream;
   }
 
-  Stream<QuerySnapshot> getProductStream(String categoryId) {
+  Stream<QuerySnapshot> getProductStreambyCategoryId(String categoryId) {
     final productStream = FirebaseFirestore.instance
         .collection('products')
         .where('categoryId', isEqualTo: categoryId)
+        .snapshots();
+    return productStream;
+  }
+
+  Stream<QuerySnapshot> getProductStream(String Id) {
+    final productStream = FirebaseFirestore.instance
+        .collection('products')
+        .where('id', isEqualTo: Id)
         .snapshots();
     return productStream;
   }

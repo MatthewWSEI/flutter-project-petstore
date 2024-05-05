@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_img/flutter_img.dart';
 import 'package:flutter_project_store/components/button.dart';
-import 'package:flutter_project_store/components/mydrawer.dart';
-import 'package:flutter_project_store/components/mytextfield.dart';
+import 'package:flutter_project_store/components/my_drawer.dart';
+import 'package:flutter_project_store/components/my_textfield.dart';
 import 'package:flutter_project_store/pages/home_page/categories.dart';
-import 'package:flutter_project_store/pages/home_page/recoemmendSection.dart';
+import 'package:flutter_project_store/pages/home_page/recommend_products.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          RecommendSection(),
+          RecommendProducts(),
           const SizedBox(
             height: 40,
           ),

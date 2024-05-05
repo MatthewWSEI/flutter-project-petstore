@@ -18,19 +18,14 @@ class MyDrawer extends StatelessWidget {
         children: [
           Column(
             children: [
-              DrawerHeader(
-                child: const Column(
+              const DrawerHeader(
+                child: Column(
                   children: [
                     Img(
                       "assets/images/store.png",
                       width: 60,
                       height: 60,
                     ),
-                    // Icon(
-                    //   Icons.store,
-                    //   size: 60,
-                    //   color: Theme.of(context).colorScheme.inversePrimary,
-                    // ),
                     SizedBox(
                       height: 10,
                     ),
@@ -76,7 +71,6 @@ class MyDrawer extends StatelessWidget {
               onTap: () async {
                 logout();
                 Navigator.pop(context);
-                // Navigator.pushNamed(context, "/login_register_page");
               },
             ),
           ),

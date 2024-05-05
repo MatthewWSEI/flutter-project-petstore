@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_img/flutter_img.dart';
 import 'package:flutter_project_store/components/my_main_button.dart';
-import 'package:flutter_project_store/components/mytextfield.dart';
+import 'package:flutter_project_store/components/my_textfield.dart';
 import 'package:flutter_project_store/helper/helper_function.dart';
 
 class LoginPage extends StatefulWidget {
@@ -52,11 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                     width: 100,
                     height: 100,
                   ),
-                  // Icon(
-                  //   Icons.store,
-                  //   size: 80,
-                  //   color: Theme.of(context).colorScheme.inversePrimary,
-                  // ),
                   SizedBox(
                     height: 10,
                   ),

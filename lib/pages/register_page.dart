@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_img/flutter_img.dart';
 import 'package:flutter_project_store/components/my_main_button.dart';
-import 'package:flutter_project_store/components/mytextfield.dart';
+import 'package:flutter_project_store/components/my_textfield.dart';
 import 'package:flutter_project_store/helper/helper_function.dart';
 
 class RegisterPage extends StatefulWidget {
