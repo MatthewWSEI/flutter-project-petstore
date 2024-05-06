@@ -18,7 +18,7 @@ class _AuthPageState extends State<AuthPage> {
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.data == null) {
-            return LoginOrRegister();
+            return const LoginOrRegister();
           }
           return HomePage();
         }

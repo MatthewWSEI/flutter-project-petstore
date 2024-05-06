@@ -6,9 +6,14 @@ import 'package:flutter_project_store/components/my_textfield.dart';
 import 'package:flutter_project_store/pages/home_page/categories.dart';
 import 'package:flutter_project_store/pages/home_page/recommend_products.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
 
   @override

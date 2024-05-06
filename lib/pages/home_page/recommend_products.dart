@@ -2,23 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project_store/components/product_tile.dart';
 import 'package:flutter_project_store/database/firebase.dart';
 import 'package:flutter_project_store/helper/helper_function.dart';
+import 'package:flutter_project_store/model/product.dart';
 import 'package:flutter_project_store/pages/product_page/product_page.dart';
 
-class RecommendProducts extends StatelessWidget {
+class RecommendProducts extends StatefulWidget {
   RecommendProducts({super.key});
 
+  @override
+  State<RecommendProducts> createState() => _RecommendProductsState();
+}
+
+class _RecommendProductsState extends State<RecommendProducts> {
   final FirebaseDatabase database = FirebaseDatabase();
+  void navigateToCategories(String id, Product item) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: ((context) =>
+                ProductPage(productId: id.toString(), product: item))));
+  }
 
   @override
   Widget build(BuildContext context) {
-    void navigateToCategories(String index) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: ((context) =>
-                  ProductPage(productId: index.toString()))));
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -60,13 +65,24 @@ class RecommendProducts extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final product = products[index];
                     String name = product['name'];
+                    String categoryId = product['categoryId'];
+                    int count = product['count'];
                     int price = product['price'];
+                    String productId = product.id.toString();
                     return ProductTile(
                       name: name,
                       price: price,
                       onTap: () {
-                        navigateToCategories(product.id.toString());
-                        // print(index);
+                        final productCreate = Product(
+                          id: productId,
+                          categoryId: categoryId,
+                          count: count,
+                          name: name,
+                          price: price,
+                        );
+                        navigateToCategories(productId, productCreate);
+                        // print(product.data());
+                        // print(product.id);
                       },
                     );
                   },

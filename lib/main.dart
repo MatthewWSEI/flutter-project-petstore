@@ -4,15 +4,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_project_store/auth/auth.dart';
 import 'package:flutter_project_store/auth/login_or_register.dart';
 import 'package:flutter_project_store/firebase_options.dart';
+import 'package:flutter_project_store/model/shop.dart';
 import 'package:flutter_project_store/pages/home_page/home_page.dart';
 import 'package:flutter_project_store/pages/profile_page.dart';
 import 'package:flutter_project_store/theme/dark_mode.dart';
 import 'package:flutter_project_store/theme/light_mode.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => Shop(),
+    child: const MyApp(),
+  ));
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
