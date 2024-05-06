@@ -5,6 +5,7 @@ import 'package:flutter_project_store/auth/auth.dart';
 import 'package:flutter_project_store/auth/login_or_register.dart';
 import 'package:flutter_project_store/firebase_options.dart';
 import 'package:flutter_project_store/model/shop.dart';
+import 'package:flutter_project_store/pages/cart_page/cart_page.dart';
 import 'package:flutter_project_store/pages/home_page/home_page.dart';
 import 'package:flutter_project_store/pages/profile_page.dart';
 import 'package:flutter_project_store/theme/dark_mode.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         "/login_register_page": (context) => const LoginOrRegister(),
         "/home_page": (context) => HomePage(),
         "/profile_page": (context) => ProfilePage(),
+        "/cart_page": (context) => CartPage(),
       },
       home: AuthPage(),
     );

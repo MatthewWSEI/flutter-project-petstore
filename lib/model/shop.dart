@@ -4,7 +4,7 @@ import 'package:flutter_project_store/model/product.dart';
 class Shop extends ChangeNotifier {
   final List<Product> _product = [];
 
-  List<Object> _cart = [];
+  final List<Product> _cart = [];
 
   List<Product> get product => _product;
   List<Object> get cart => _cart;
@@ -16,7 +16,7 @@ class Shop extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeFromCart(Object productItem) {
+  void removeFromCart(Product productItem) {
     _cart.remove(productItem);
     notifyListeners();
   }

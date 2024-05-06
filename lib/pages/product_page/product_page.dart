@@ -51,11 +51,15 @@ class _ProductPageState extends State<ProductPage> {
         print(shop);
         showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (context) => AlertDialog(
-                  content: const Text("Successfully added to cart"),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  content: const Text("Successfully added to cart",
+                      textAlign: TextAlign.center),
                   actions: [
                     IconButton(
                         onPressed: () {
+                          Navigator.pop(context);
                           Navigator.pop(context);
                         },
                         icon: const Icon(Icons.done))

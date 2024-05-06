@@ -61,7 +61,7 @@ class _RecommendProductsState extends State<RecommendProducts> {
                   ),
                   itemCount: 3,
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemBuilder: (context, index) {
                     final product = products[index];
                     String name = product['name'];

@@ -29,15 +29,16 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           elevation: 0,
           actions: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.only(right: 25),
-                alignment: Alignment.center,
-                width: 45,
-                child: const Icon(
+            Container(
+              margin: EdgeInsets.only(right: 20),
+              alignment: Alignment.center,
+              child: IconButton(
+                iconSize: 25,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart_page');
+                },
+                icon: const Icon(
                   Icons.shopping_cart,
-                  // size: 40,
                 ),
               ),
             ),
