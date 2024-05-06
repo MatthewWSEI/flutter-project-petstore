@@ -9,7 +9,7 @@ class Shop extends ChangeNotifier {
   List<Product> get product => _product;
   List<Object> get cart => _cart;
 
-  void addToCart(Object productItem, int quantity) {
+  void addToCart(Product productItem, int quantity) {
     for (int i = 0; i < quantity; i++) {
       _cart.add(productItem);
     }

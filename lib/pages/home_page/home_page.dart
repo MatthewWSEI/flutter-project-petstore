@@ -34,8 +34,11 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 padding: const EdgeInsets.only(right: 25),
                 alignment: Alignment.center,
-                width: 40,
-                child: const Icon(Icons.shopping_cart),
+                width: 45,
+                child: const Icon(
+                  Icons.shopping_cart,
+                  // size: 40,
+                ),
               ),
             ),
           ],

@@ -39,7 +39,7 @@ dependencies:
   firebase_auth: ^4.19.0
   cloud_firestore: ^4.16.1
   flutter_img: ^0.1.6+148
-  provider:
+  provider: ^6.1.2
 
 
 dev_dependencies:

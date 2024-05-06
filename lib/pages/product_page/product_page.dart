@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_img/flutter_img.dart';
 import 'package:flutter_project_store/components/button.dart';
 import 'package:flutter_project_store/helper/helper_function.dart';
+import 'package:flutter_project_store/model/shop.dart';
+import 'package:provider/provider.dart';
 
 class ProductPage extends StatefulWidget {
   final String productId;
@@ -42,22 +44,24 @@ class _ProductPageState extends State<ProductPage> {
     }
 
     void addToCart(Object object) {
-      // if (quantityCount > 0) {
-      //   final shop = context.read()<Shop>();
+      if (quantityCount > 0) {
+        final shop = context.read<Shop>();
 
-      //   shop.addToCart(widget.productId, quantityCount);
-
-      //   showDialog(
-      //       context: context,
-      //       builder: (context) => AlertDialog(
-      //             content: Text("Successfully added to cart"),
-      //             actions: [
-      //               IconButton(onPressed: () {}, icon: Icon(Icons.done))
-      //             ],
-      //           ));
-      // }
-
-      print(widget.product.id);
+        shop.addToCart(widget.product, quantityCount);
+        print(shop);
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  content: const Text("Successfully added to cart"),
+                  actions: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.done))
+                  ],
+                ));
+      }
     }
 
     return Scaffold(
@@ -188,7 +192,7 @@ class _ProductPageState extends State<ProductPage> {
                     MyButton(
                         text: 'Add Cart',
                         onTap: () {
-                          // addToCart(product);
+                          addToCart("product");
                         })
                   ],
                 ),
