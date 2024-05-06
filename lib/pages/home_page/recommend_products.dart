@@ -81,8 +81,6 @@ class _RecommendProductsState extends State<RecommendProducts> {
                           price: price,
                         );
                         navigateToCategories(productId, productCreate);
-                        // print(product.data());
-                        // print(product.id);
                       },
                     );
                   },
