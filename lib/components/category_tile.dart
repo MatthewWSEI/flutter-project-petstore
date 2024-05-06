@@ -16,8 +16,8 @@ class CategoryTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        width: 140,
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        width: 120,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(colors: [
@@ -28,8 +28,8 @@ class CategoryTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              width: 130,
-              height: 90,
+              width: 70,
+              height: 70,
               decoration: const BoxDecoration(
                   color: Colors.white, shape: BoxShape.circle),
               child: Padding(
@@ -45,7 +45,7 @@ class CategoryTile extends StatelessWidget {
             ),
             Text(
               name,
-              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               textAlign: TextAlign.center,
             ),
           ],

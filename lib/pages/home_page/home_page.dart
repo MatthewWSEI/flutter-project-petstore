@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         body: ListView(children: [
           Container(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
+            margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
             decoration: BoxDecoration(
                 gradient: LinearGradient(colors: [
                   const Color(0xff9DCEFF).withOpacity(0.7),
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                     const Text(
                       "Get -20% Promo",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w900),
                     ),
                     const SizedBox(
                       height: 25,
@@ -70,22 +70,19 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Img(
                   "assets/images/dogfood.png",
-                  height: 150,
-                  width: 150,
+                  height: 200,
+                  width: 200,
                 )
               ],
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
+            margin: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
             child: MyTextField(
                 hintText: "Search...",
                 obscureText: false,
                 controller: searchController,
                 icon: const Icon(Icons.search)),
-          ),
-          const SizedBox(
-            height: 40,
           ),
           Categories(),
           const SizedBox(
@@ -93,7 +90,7 @@ class _HomePageState extends State<HomePage> {
           ),
           RecommendProducts(),
           const SizedBox(
-            height: 40,
+            height: 20,
           ),
         ]));
   }

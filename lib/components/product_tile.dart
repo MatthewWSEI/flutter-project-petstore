@@ -17,8 +17,8 @@ class ProductTile extends StatelessWidget {
     return GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-          width: 220,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          width: 200,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
                 const Color(0xff9DCEFF).withOpacity(0.7),
@@ -47,7 +47,7 @@ class ProductTile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   Row(
                     children: [

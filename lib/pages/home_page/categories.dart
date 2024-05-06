@@ -54,7 +54,7 @@ class _CategoriesState extends State<Categories> {
 
               final categories = snapshot.data!.docs;
               return SizedBox(
-                height: 200,
+                height: 150,
                 child: ListView.separated(
                   itemCount: categories.length,
                   scrollDirection: Axis.horizontal,
